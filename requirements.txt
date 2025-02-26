@@ -1,0 +1,17 @@
+Flask==2.3.2
+Flask-SQLAlchemy==3.0.5
+Flask-Login==0.6.2
+Flask-WTF==1.1.1
+WTForms==3.0.1
+Flask-Migrate==4.0.4
+Flask-Bcrypt==1.0.1
+Flask-Script==2.0.6
+Flask-Mail==0.9.1
+Flask-CORS==3.0.10
+Flask-DebugToolbar==0.13.1
+Flask-Testing==0.8.1
+pytest==7.4.0
+pytest-cov==4.1.0
+black==23.9.1
+flake8==6.1.0
+python-dotenv==1.0.0

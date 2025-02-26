@@ -1,0 +1,549 @@
+/* Cores atualizadas */
+:root {
+    --azul-escuro: #0f3460;
+    --azul-escuro-secundario: #1a1a2e;
+    --azul-claro: #00d4ff;
+    --cinza-escuro: #111;
+    --destaque: #00ff88;
+}
+
+/* Estilos globais */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: var(--cinza-escuro);
+    color: #fff;
+    line-height: 1.6;
+}
+
+header {
+    background: linear-gradient(135deg, var(--azul-escuro), var(--azul-escuro-secundario));
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0, 212, 255, 0.2);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+nav h1 {
+    font-size: 1.8em;
+    color: var(--azul-claro);
+    font-weight: 700;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: var(--destaque);
+}
+
+/* Estilo da seção Hero */
+#hero {
+    text-align: center;
+    padding: 150px 50px;
+    background: linear-gradient(135deg, var(--azul-escuro), var(--azul-escuro-secundario));
+    margin-top: 80px;
+    background-image: url('{{ url_for("static", filename="images/tech-background.jpg") }}');
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+#hero h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--azul-claro), var(--destaque));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-glow 2s infinite alternate;
+}
+
+@keyframes text-glow {
+    0% {
+        text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+    }
+}
+
+#hero p {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+#hero p strong {
+    color: var(--azul-claro);
+    font-weight: 600;
+}
+
+/* Estilo do botão */
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, var(--azul-claro), var(--destaque));
+    color: var(--cinza-escuro);
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 1.2em;
+    font-weight: 600;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+    border-radius: 50%;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+}
+
+.btn:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Restante do CSS (mantido igual) */
+#sobre {
+    padding: 80px 50px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--azul-escuro-secundario), var(--azul-escuro));
+}
+
+#sobre h2 {
+    font-size: 2em;
+    margin-bottom: 15px;
+    color: var(--azul-claro);
+}
+
+#sobre p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: auto;
+}
+
+#servicos {
+    padding: 80px 50px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--azul-escuro), var(--azul-escuro-secundario));
+}
+
+#servicos h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: var(--azul-claro);
+}
+
+.servicos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.servico {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.servico:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 212, 255, 0.2);
+    border-color: var(--azul-claro);
+}
+
+.servico h3 {
+    color: var(--azul-claro);
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.servico p {
+    font-size: 1em;
+    color: #ccc;
+}
+
+/* Estilos para os ícones */
+.servico i, .etapa i {
+    font-size: 2.5em;
+    color: var(--azul-claro);
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.servico:hover i, .etapa:hover i {
+    color: var(--destaque);
+}
+
+#processo {
+    text-align: center;
+    padding: 80px 50px;
+    background: linear-gradient(135deg, #0f0f3e, #1b1b56);
+    color: white;
+}
+
+.processo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.etapa {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.etapa:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 212, 255, 0.2);
+    border-color: var(--azul-claro);
+}
+
+.etapa-icone {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.seta {
+    font-size: 2em;
+    color: rgba(0, 212, 255, 0.8);
+}
+
+.seta i {
+    font-size: 2em;
+    color: rgba(0, 212, 255, 0.8);
+    transition: transform 0.3s ease;
+}
+
+.seta:hover i {
+    transform: scale(1.2);
+}
+
+#contato {
+    text-align: center;
+    padding: 80px 50px;
+    background: linear-gradient(135deg, var(--azul-escuro-secundario), var(--azul-escuro));
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin: auto;
+}
+
+form input, form textarea {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #1a1a2e;
+    color: #fff;
+}
+
+form button {
+    background-color: var(--destaque);
+    color: var(--cinza-escuro);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background-color: #00cc77;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    color: var(--azul-claro);
+    font-size: 1.2em;
+}
+
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 212, 255, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: -1;
+    animation: pulse 5s infinite alternate ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
+
+/* Estilo da seção Fale Conosco */
+#contato {
+    text-align: center;
+    padding: 80px 20px;
+    background: linear-gradient(135deg, var(--azul-escuro-secundario), var(--azul-escuro));
+}
+
+#contato h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--azul-claro);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#contato h2 i {
+    font-size: 1.2em;
+    color: var(--destaque);
+}
+
+#contato form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    max-width: 800px; /* Aumentei a largura máxima para acomodar as colunas */
+    margin: auto;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+#contato form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 212, 255, 0.2);
+    border-color: var(--azul-claro);
+}
+
+/* Coluna da Esquerda (Nome e Email) */
+#contato .coluna-esquerda {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Coluna da Direita (Mensagem) */
+#contato .coluna-direita {
+    flex: 1;
+}
+
+#contato form .input-group {
+    position: relative;
+}
+
+#contato form input, #contato form textarea {
+    width: 100%;
+    padding: 15px 15px 15px 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+#contato form input::placeholder, #contato form textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Estilo do placeholder do textarea */
+#contato form textarea::placeholder {
+    font-family: 'Poppins', sans-serif; /* Mesma fonte */
+    font-size: 1em; /* Mesmo tamanho */
+    color: rgba(255, 255, 255, 0.5); /* Mesma cor do placeholder dos outros campos */
+}
+
+
+#contato form input:focus, #contato form textarea:focus {
+    border-color: var(--azul-claro);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    outline: none;
+}
+
+/* Estilo do textarea com placeholder alinhado e fonte consistente */
+#contato form textarea {
+    resize: vertical;
+    min-height: 200px;
+    padding-left: 40px; /* Ajuste o padding para alinhar com o ícone */
+    padding-top: 15px; /* Mantém o padding superior consistente */
+    font-family: 'Poppins', sans-serif; /* Garante a mesma fonte */
+    font-size: 1em; /* Tamanho da fonte igual aos outros campos */
+    color: #fff; /* Cor do texto */
+    line-height: 1.6; /* Ajuste o line-height para alinhar o ícone */
+}
+
+#contato form .input-group i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--azul-claro);
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+}
+
+#contato form input:focus + i, #contato form textarea:focus + i {
+    color: var(--destaque);
+}
+
+#contato form button {
+    background: linear-gradient(135deg, var(--azul-claro), var(--destaque));
+    color: var(--cinza-escuro);
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 200px;
+    position: relative;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+#contato form button::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s ease;
+    border-radius: 50%;
+}
+
+#contato form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 12px rgba(0, 212, 255, 0.3);
+}
+
+#contato form button:hover::before {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#contato form button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 212, 255, 0.3);
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    #contato h2 {
+        font-size: 2em;
+    }
+
+    #contato form {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    #contato .coluna-esquerda, #contato .coluna-direita {
+        flex: none;
+        width: 100%;
+    }
+
+    #contato form textarea {
+        min-height: 150px;
+    }
+
+    #contato form button {
+        max-width: 100%;
+    }
+}
+
+/* Estilo do textarea com placeholder alinhado */
+#contato form textarea {
+    resize: vertical;
+    min-height: 200px;
+    padding-left: 40px; /* Ajuste o padding para alinhar com o ícone */
+    padding-top: 15px; /* Mantém o padding superior consistente */
+}
+
+/* Ajuste do ícone no textarea */
+#contato form .input-group textarea + i {
+    top: 23px; /* Ajuste fino na posição vertical do ícone */
+    transform: translateY(0); /* Remove o translateY anterior */
+}
