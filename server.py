@@ -1,13 +1,12 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
-from app.routes.admin import admin_bp
+from functools import wraps
+import bcrypt
 
 app = Flask(__name__, template_folder='app/templates', static_folder='app/static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mensagens.db'
+app.secret_key = 'sua_chave_secreta_aqui'  # Necessário para usar sessões
 db = SQLAlchemy(app)
-
-# Registrar o Blueprint do admin
-app.register_blueprint(admin_bp)
 
 # Modelo da tabela de mensagens
 class Mensagem(db.Model):
@@ -16,24 +15,85 @@ class Mensagem(db.Model):
     email = db.Column(db.String(100), nullable=False)
     mensagem = db.Column(db.Text, nullable=False)
 
+# Modelo da tabela de usuários
+class Usuario(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(100), nullable=False, unique=True)
+    senha_hash = db.Column(db.String(128), nullable=False)  # Armazena o hash da senha
+    is_admin = db.Column(db.Boolean, default=False)
+
+    def set_senha(self, senha):
+        # Gera o hash da senha
+        self.senha_hash = bcrypt.hashpw(senha.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+
+    def verificar_senha(self, senha):
+        # Verifica se a senha está correta
+        return bcrypt.checkpw(senha.encode('utf-8'), self.senha_hash.encode('utf-8'))
+
 # Cria o banco de dados (execute apenas uma vez)
 with app.app_context():
     db.create_all()
 
-# Rota para receber mensagens do formulário
-@app.route('/enviar-mensagem', methods=['POST'])
-def enviar_mensagem():
-    dados = request.form
-    nova_mensagem = Mensagem(nome=dados['nome'], email=dados['email'], mensagem=dados['mensagem'])
-    db.session.add(nova_mensagem)
-    db.session.commit()
-    return jsonify({"success": True})
+# Cria um usuário administrador padrão (se não existir)
+with app.app_context():
+    if not Usuario.query.filter_by(email='admin@bytewave.com').first():
+        admin = Usuario(email='admin@bytewave.com', is_admin=True)
+        admin.set_senha('senha_segura')  # Define a senha com hash
+        db.session.add(admin)
+        db.session.commit()
+        print("Usuário administrador padrão criado com sucesso!")
 
-# Rota para o painel de administrador buscar mensagens
-@app.route('/mensagens', methods=['GET'])
-def listar_mensagens():
-    mensagens = Mensagem.query.all()
-    return jsonify([{"id": msg.id, "nome": msg.nome, "email": msg.email, "mensagem": msg.mensagem} for msg in mensagens])
+# Decorator para verificar autenticação
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'usuario_id' not in session:
+            flash('Você precisa fazer login para acessar esta página.', 'error')
+            return redirect(url_for('login'))
+        return f(*args, **kwargs)
+    return decorated_function
+
+# Rota para a página de login
+@app.route('/login', methods=['GET'])
+def login():
+    return render_template('login.html')
+
+# Rota para autenticar o usuário
+@app.route('/login', methods=['POST'])
+def autenticar():
+    email = request.form.get('email')
+    senha = request.form.get('senha')
+
+    usuario = Usuario.query.filter_by(email=email).first()
+
+    if usuario and usuario.verificar_senha(senha):
+        session['usuario_id'] = usuario.id
+        session['is_admin'] = usuario.is_admin
+
+        if usuario.is_admin:
+            return redirect(url_for('admin.painel'))  # Redireciona para o painel de admin
+        else:
+            return redirect(url_for('index'))  # Redireciona para a página inicial
+    else:
+        flash('Credenciais inválidas. Tente novamente.', 'error')
+        return redirect(url_for('login'))
+
+# Rota para o painel de administrador
+@app.route('/painel')
+@login_required
+def painel():
+    if session.get('is_admin'):
+        return render_template('admin.html')
+    else:
+        flash('Acesso negado. Você não tem permissão para acessar esta página.', 'error')
+        return redirect(url_for('index'))
+
+# Rota para logout
+@app.route('/logout')
+def logout():
+    session.clear()
+    flash('Você foi desconectado com sucesso.', 'success')
+    return redirect(url_for('index'))
 
 # Rota principal
 @app.route('/')
@@ -52,8 +112,12 @@ def contato():
     email = data.get("email")
     mensagem = data.get("mensagem")
     
-    print(f"Mensagem recebida: Nome: {nome}, Email: {email}, Mensagem: {mensagem}")
-    return jsonify({"status": "success", "message": "Mensagem enviada com sucesso!"})
+    nova_mensagem = Mensagem(nome=nome, email=email, mensagem=mensagem)
+    db.session.add(nova_mensagem)
+    db.session.commit()
+
+    flash('Mensagem enviada com sucesso!', 'success')
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)

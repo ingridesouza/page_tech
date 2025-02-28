@@ -1,12 +1,39 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Bytewave</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
 
-{% block content %}
-<section id="login">
-    <h2><i class="fas fa-sign-in-alt"></i> Login</h2>
-    <form method="POST">
-        <input type="text" name="username" placeholder="Usuário" required>
-        <input type="password" name="password" placeholder="Senha" required>
-        <button type="submit">Entrar</button>
-    </form>
-</section>
-{% endblock %}
+
+    <section id="login">
+        <h2>Login</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form id="formLogin" action="{{ url_for('autenticar') }}" method="POST">
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Seu Email" required>
+                <i class="fas fa-envelope"></i>
+            </div>
+            <div class="input-group">
+                <input type="password" name="senha" placeholder="Sua Senha" required>
+                <i class="fas fa-lock"></i>
+            </div>
+            <button type="submit">Entrar</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Bytewave - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
