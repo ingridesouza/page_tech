@@ -2,11 +2,15 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for, s
 from flask_sqlalchemy import SQLAlchemy
 from functools import wraps
 import bcrypt
+from app.routes.admin import admin_bp  # Importar o Blueprint
 
 app = Flask(__name__, template_folder='app/templates', static_folder='app/static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mensagens.db'
 app.secret_key = 'sua_chave_secreta_aqui'  # Necessário para usar sessões
 db = SQLAlchemy(app)
+
+# Registrar o Blueprint
+app.register_blueprint(admin_bp)
 
 # Modelo da tabela de mensagens
 class Mensagem(db.Model):

@@ -1,130 +1,105 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bytewave</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script defer src="{{ url_for('static', filename='js/script.js') }}"></script>
-</head>
-<body>
-    <header>
-        <nav>
-            <h1>Bytewave</h1>
-            <ul>
-                <li><a href="#sobre">Sobre</a></li>
-                <li><a href="#servicos">Serviços</a></li>
-                <li><a href="#contato">Contato</a></li>
-                <li><a href="{{ url_for('login') }}">Login</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <section id="hero" style="background-image: url('{{ url_for('static', filename='images/inteligencia-artificial.webp') }}');">
-        <div class="hero-content">
-            <h2>Transformamos ideias em realidade digital</h2>
-            <p>Desenvolvimento de software sob medida para seu negócio.</p>
-            <a href="#contato" class="btn">Entre em contato</a>
-        </div>
-    </section>
-    
-    <section id="sobre">
-        <h2>Nossa História</h2>
-        <p>A ByteWave nasceu da paixão pela tecnologia e do desejo de criar soluções digitais que realmente fazem a diferença. Desde o início, entendemos que cada empresa tem desafios únicos e, por isso, buscamos oferecer mais do que apenas software – entregamos <strong>soluções personalizadas</strong>, moldadas para atender às necessidades específicas de cada cliente.</p>
-    </section>
-    
-    <section id="servicos">
-        <h2>Nossos Serviços</h2>
-        <div class="servicos-container">
-            <div class="servico">
-                <i class="fas fa-cogs"></i>
-                <h3>Soluções Customizáveis</h3>
-                <p>Softwares desenvolvidos sob medida para cada modelo de negócio, garantindo eficiência e escalabilidade.</p>
-            </div>
-            <div class="servico">
-                <i class="fas fa-laptop-code"></i>
-                <h3>Landing Pages Completas</h3>
-                <p>Desenvolvemos e entregamos landing pages otimizadas para conversão e SEO, com design moderno e responsivo.</p>
-            </div>
-            <div class="servico">
-                <i class="fas fa-network-wired"></i>
-                <h3>Soluções para Intranet</h3>
-                <p>Implementamos sistemas internos seguros e eficientes para melhorar a comunicação e produtividade dentro da sua empresa.</p>
-            </div>
-            <div class="servico">
-                <i class="fas fa-brain"></i>
-                <h3>Inteligência Artificial</h3>
-                <p>Automação e análise avançada de dados para otimizar processos e melhorar a experiência do usuário.</p>
-            </div>
-        </div>
-    </section>
+{% extends "base.html" %}
 
-    <section id="processo">
-        <h2>Nosso Processo de Desenvolvimento</h2>
-        <div class="processo-container">
-            <div class="etapa">
-                <i class="fas fa-lightbulb"></i>
-                <h3>Conceito</h3>
-                <p>Analisamos suas necessidades, identificamos oportunidades e planejamos a melhor estratégia para o seu negócio.</p>
+{% block content %}
+<section id="hero" style="background-image: url('{{ url_for('static', filename='images/inteligencia-artificial.webp') }}');">
+    <div class="hero-content">
+        <h2>Transformamos ideias em realidade digital</h2>
+        <p>Desenvolvimento de software sob medida para seu negócio.</p>
+        <a href="#contato" class="btn">Entre em contato</a>
+    </div>
+</section>
+
+<section id="sobre">
+    <h2>Nossa História</h2>
+    <p>A ByteWave nasceu da paixão pela tecnologia e do desejo de criar soluções digitais que realmente fazem a diferença. Desde o início, entendemos que cada empresa tem desafios únicos e, por isso, buscamos oferecer mais do que apenas software – entregamos <strong>soluções personalizadas</strong>, moldadas para atender às necessidades específicas de cada cliente.</p>
+</section>
+
+<section id="servicos">
+    <h2>Nossos Serviços</h2>
+    <div class="servicos-container">
+        <div class="servico">
+            <i class="fas fa-cogs"></i>
+            <h3>Soluções Customizáveis</h3>
+            <p>Softwares desenvolvidos sob medida para cada modelo de negócio, garantindo eficiência e escalabilidade.</p>
+        </div>
+        <div class="servico">
+            <i class="fas fa-laptop-code"></i>
+            <h3>Landing Pages Completas</h3>
+            <p>Desenvolvemos e entregamos landing pages otimizadas para conversão e SEO, com design moderno e responsivo.</p>
+        </div>
+        <div class="servico">
+            <i class="fas fa-network-wired"></i>
+            <h3>Soluções para Intranet</h3>
+            <p>Implementamos sistemas internos seguros e eficientes para melhorar a comunicação e produtividade dentro da sua empresa.</p>
+        </div>
+        <div class="servico">
+            <i class="fas fa-brain"></i>
+            <h3>Inteligência Artificial</h3>
+            <p>Automação e análise avançada de dados para otimizar processos e melhorar a experiência do usuário.</p>
+        </div>
+    </div>
+</section>
+
+<section id="processo">
+    <h2>Nosso Processo de Desenvolvimento</h2>
+    <div class="processo-container">
+        <div class="etapa">
+            <i class="fas fa-lightbulb"></i>
+            <h3>Conceito</h3>
+            <p>Analisamos suas necessidades, identificamos oportunidades e planejamos a melhor estratégia para o seu negócio.</p>
+        </div>
+        
+        <div class="seta"><i class="fas fa-arrow-right"></i></div>
+        
+        <div class="etapa">
+            <i class="fas fa-search"></i>
+            <h3>Prototipagem</h3>
+            <p>Criamos um MVP funcional com diferentes abordagens para garantir a melhor experiência para seu público.</p>
+        </div>
+
+        <div class="seta"><i class="fas fa-arrow-right"></i></div>
+
+        <div class="etapa">
+            <i class="fas fa-tools"></i>
+            <h3>Desenvolvimento</h3>
+            <p>Usamos as melhores tecnologias para construir um sistema robusto, escalável e com SEO otimizado.</p>
+        </div>
+
+        <div class="seta"><i class="fas fa-arrow-right"></i></div>
+
+        <div class="etapa">
+            <i class="fas fa-rocket"></i>
+            <h3>Deploy e Otimização</h3>
+            <p>Publicamos seu projeto e acompanhamos métricas por 30 dias para otimizar e garantir a melhor performance.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contato">
+    <h2><i class="fas fa-envelope"></i> Fale Conosco</h2>
+    <form id="formContato">
+        <!-- Coluna da Esquerda (Nome e Email) -->
+        <div class="coluna-esquerda">
+            <div class="input-group">
+                <input type="text" name="nome" placeholder="Seu Nome" required>
+                <i class="fas fa-user"></i>
             </div>
-            
-            <div class="seta"><i class="fas fa-arrow-right"></i></div>
-            
-            <div class="etapa">
-                <i class="fas fa-search"></i>
-                <h3>Prototipagem</h3>
-                <p>Criamos um MVP funcional com diferentes abordagens para garantir a melhor experiência para seu público.</p>
-            </div>
-    
-            <div class="seta"><i class="fas fa-arrow-right"></i></div>
-    
-            <div class="etapa">
-                <i class="fas fa-tools"></i>
-                <h3>Desenvolvimento</h3>
-                <p>Usamos as melhores tecnologias para construir um sistema robusto, escalável e com SEO otimizado.</p>
-            </div>
-    
-            <div class="seta"><i class="fas fa-arrow-right"></i></div>
-    
-            <div class="etapa">
-                <i class="fas fa-rocket"></i>
-                <h3>Deploy e Otimização</h3>
-                <p>Publicamos seu projeto e acompanhamos métricas por 30 dias para otimizar e garantir a melhor performance.</p>
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Seu Email" required>
+                <i class="fas fa-envelope"></i>
             </div>
         </div>
-    </section>
-    
-    <section id="contato">
-        <h2><i class="fas fa-envelope"></i> Fale Conosco</h2>
-        <form id="formContato">
-            <!-- Coluna da Esquerda (Nome e Email) -->
-            <div class="coluna-esquerda">
-                <div class="input-group">
-                    <input type="text" name="nome" placeholder="Seu Nome" required>
-                    <i class="fas fa-user"></i>
-                </div>
-                <div class="input-group">
-                    <input type="email" name="email" placeholder="Seu Email" required>
-                    <i class="fas fa-envelope"></i>
-                </div>
+
+        <!-- Coluna da Direita (Mensagem) -->
+        <div class="coluna-direita">
+            <div class="input-group">
+                <textarea name="mensagem" placeholder="Sua Mensagem" required></textarea>
+                <i class="fas fa-comment"></i>
             </div>
-    
-            <!-- Coluna da Direita (Mensagem) -->
-            <div class="coluna-direita">
-                <div class="input-group">
-                    <textarea name="mensagem" placeholder="Sua Mensagem" required></textarea>
-                    <i class="fas fa-comment"></i>
-                </div>
-            </div>
-    
-            <!-- Botão de Envio -->
-            <button type="submit">Enviar</button>
-        </form>
-    </section>
-    
-    <footer>
-        <p>&copy; 2025 Bytewave - Todos os direitos reservados.</p>
-    </footer>
-</body>
-</html>
+        </div>
+
+        <!-- Botão de Envio -->
+        <button type="submit">Enviar</button>
+    </form>
+</section>
+{% endblock %}
