@@ -5,5 +5,28 @@
     <h2>Painel de Administração</h2>
     <p>Bem-vindo ao painel de administração.</p>
     <a href="{{ url_for('index') }}">Voltar para a página inicial</a>
+    
+    <!-- Sessão para exibir as mensagens enviadas pelo formulário -->
+    <h3>Mensagens Recebidas</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Mensagem</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for msg in mensagens %}
+            <tr>
+                <td>{{ msg.id }}</td>
+                <td>{{ msg.nome }}</td>
+                <td>{{ msg.email }}</td>
+                <td>{{ msg.mensagem }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </section>
 {% endblock %}

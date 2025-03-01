@@ -6,7 +6,8 @@ from app.routes.admin import admin_bp  # Importar o Blueprint
 
 app = Flask(__name__, template_folder='app/templates', static_folder='app/static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mensagens.db'
-app.secret_key = 'sua_chave_secreta_aqui'  # Necessário para usar sessões
+app.secret_key = '927e3ae49c9827f64cb30496b705838b'  # Chave secreta para sessões
+
 db = SQLAlchemy(app)
 
 # Registrar o Blueprint
@@ -47,7 +48,7 @@ with app.app_context():
         db.session.commit()
         print("Usuário administrador padrão criado com sucesso!")
 
-# Decorator para verificar autenticação
+# Decorator para verificar autenticação via session
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -71,6 +72,7 @@ def autenticar():
     usuario = Usuario.query.filter_by(email=email).first()
 
     if usuario and usuario.verificar_senha(senha):
+        # Grava o ID do usuário e a flag de admin na sessão
         session['usuario_id'] = usuario.id
         session['is_admin'] = usuario.is_admin
 
@@ -87,7 +89,9 @@ def autenticar():
 @login_required
 def painel():
     if session.get('is_admin'):
-        return render_template('admin.html')
+        # Busca todas as mensagens do banco
+        mensagens = Mensagem.query.all()
+        return render_template('admin.html', mensagens=mensagens)
     else:
         flash('Acesso negado. Você não tem permissão para acessar esta página.', 'error')
         return redirect(url_for('index'))

@@ -1,8 +1,98 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+/* Estilos específicos para a tela de login */
+#login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    min-height: 70vh;
+    padding-top: 40px;
+    /* Fundo opcional; caso já exista um fundo geral em base.html, remova */
+    background-color: #000;
+}
+
+#login h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.flash {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    width: 300px;
+}
+
+/* Exemplo de categorias: .flash.error, .flash.success, etc. */
+.flash.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+.flash.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+/* Estilo do formulário */
+#formLogin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 40px 10px 10px; /* Espaço extra para o ícone */
+    border: 2px solid #444;
+    border-radius: 5px;
+    background-color: #111;
+    color: #fff;
+    font-size: 1em;
+}
+
+.input-group i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.input-group input:focus {
+    border-color: #0f0; /* borda verde para foco */
+    outline: none;
+}
+
+button[type="submit"] {
+    background-color: #0f0; /* verde neon */
+    color: #000;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #0c0;
+}
+</style>
+
 <section id="login">
     <h2>Login</h2>
+    
     {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
             {% for category, message in messages %}
@@ -10,6 +100,7 @@
             {% endfor %}
         {% endif %}
     {% endwith %}
+
     <form id="formLogin" action="{{ url_for('autenticar') }}" method="POST">
         <div class="input-group">
             <input type="email" name="email" placeholder="Seu Email" required>
