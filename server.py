@@ -10,7 +10,7 @@ app.secret_key = '927e3ae49c9827f64cb30496b705838b'  # Chave secreta para sessõ
 
 db = SQLAlchemy(app)
 
-# Registrar o Blueprint
+# Registrar o Blueprint (caso ainda queira ter admin em outra rota)
 app.register_blueprint(admin_bp)
 
 # Modelo da tabela de mensagens
@@ -39,7 +39,7 @@ class Usuario(db.Model):
 with app.app_context():
     db.create_all()
 
-# Cria um usuário administrador padrão (se não existir)
+# Cria um usuário administrador padrão (opcional, se quiser)
 with app.app_context():
     if not Usuario.query.filter_by(email='admin@bytewave.com').first():
         admin = Usuario(email='admin@bytewave.com', is_admin=True)
@@ -58,12 +58,12 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-# Rota para a página de login
+# Rota para a página de login (GET)
 @app.route('/login', methods=['GET'])
 def login():
     return render_template('login.html')
 
-# Rota para autenticar o usuário
+# Rota para autenticar o usuário (POST)
 @app.route('/login', methods=['POST'])
 def autenticar():
     email = request.form.get('email')
@@ -72,31 +72,32 @@ def autenticar():
     usuario = Usuario.query.filter_by(email=email).first()
 
     if usuario and usuario.verificar_senha(senha):
-        # Grava o ID do usuário e a flag de admin na sessão
+        # Grava o ID do usuário na sessão
         session['usuario_id'] = usuario.id
         session['is_admin'] = usuario.is_admin
 
+        # Se for admin, poderia ir para algum lugar especial se quisesse
         if usuario.is_admin:
-            return redirect(url_for('admin.painel'))  # Redireciona para o painel de admin
+            # Ainda existe esta rota mas não aparece no menu
+            return redirect(url_for('admin.painel'))
         else:
-            return redirect(url_for('index'))  # Redireciona para a página inicial
+            return redirect(url_for('index'))
     else:
         flash('Credenciais inválidas. Tente novamente.', 'error')
         return redirect(url_for('login'))
 
-# Rota para o painel de administrador
+# Se quiser manter o painel de admin sem mostrar no menu
 @app.route('/painel')
 @login_required
 def painel():
     if session.get('is_admin'):
-        # Busca todas as mensagens do banco
         mensagens = Mensagem.query.all()
         return render_template('admin.html', mensagens=mensagens)
     else:
         flash('Acesso negado. Você não tem permissão para acessar esta página.', 'error')
         return redirect(url_for('index'))
 
-# Rota para logout
+# Rota para logout (não aparece no menu, mas você pode acessar via link direto)
 @app.route('/logout')
 def logout():
     session.clear()
@@ -119,7 +120,7 @@ def contato():
     nome = data.get("nome")
     email = data.get("email")
     mensagem = data.get("mensagem")
-    
+
     nova_mensagem = Mensagem(nome=nome, email=email, mensagem=mensagem)
     db.session.add(nova_mensagem)
     db.session.commit()
