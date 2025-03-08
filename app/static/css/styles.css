@@ -204,6 +204,142 @@ nav ul li a:hover {
     }
 }
 
+/* Seção Automação e IA */
+#automation-ia {
+    color: black;
+    padding: 80px 40px;
+    background-color: #f9f9f9;
+}
+
+#automation-ia h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 60px;
+    color: var(--azul-escuro); /* Cor azul escuro para o título */
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+/* Alternar a ordem das colunas */
+.content-grid:nth-child(odd) .text-content {
+    order: 2; /* Texto à direita */
+}
+
+.content-grid:nth-child(odd) .image-content {
+    order: 1; /* Imagens à esquerda */
+}
+
+.text-content {
+    padding: 20px;
+}
+
+.text-content h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: var(--azul-escuro); /* Cor azul escuro para os subtítulos */
+}
+
+.text-content p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555; /* Texto mais suave */
+}
+
+.image-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.image-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-content img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .content-grid:nth-child(odd) .text-content,
+    .content-grid:nth-child(odd) .image-content {
+        order: initial; /* Reset da ordem em telas menores */
+    }
+
+    #automation-ia h2 {
+        font-size: 2em;
+    }
+
+    .text-content h3 {
+        font-size: 1.5em;
+    }
+
+    .text-content p {
+        font-size: 1em;
+    }
+}
+/* Nova fileira de imagens para Machine Learning e IA */
+.image-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 imagens por linha */
+    gap: 20px;
+    margin-top: 40px;
+}
+
+.image-row img {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-row img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
+}
+
+/* Ajustes para telas menores */
+@media (max-width: 768px) {
+    .image-row {
+        grid-template-columns: repeat(2, 1fr); /* 2 imagens por linha em telas menores */
+    }
+}
+
+.text-only {
+    text-align: center;
+    color: #0f3460;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.text-only h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.text-only p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
 /* Seção Serviços */
 #servicos {
     padding: 80px 50px;
@@ -356,7 +492,7 @@ nav ul li a:hover {
 #contato {
     text-align: center;
     padding: 80px 50px;
-    background: linear-gradient(135deg, #1a1a2e, #0f3460); /* Gradiente mais suave e escuro */
+    background-color: #000000;
     color: #fff;
 }
 
@@ -458,7 +594,7 @@ nav ul li a:hover {
 
 /* Botão de enviar */
 #contato form button {
-    background: linear-gradient(135deg, var(--azul-claro), var(--azul-escuro));
+    background-color: var(--azul-claro); /* Cor azul claro */
     color: #fff; /* Texto branco para contraste */
     padding: 15px 30px;
     border: none;
@@ -475,26 +611,10 @@ nav ul li a:hover {
     margin: 20px auto 0; /* Centraliza o botão */
 }
 
-#contato form button::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.5s ease;
-    border-radius: 50%;
-}
-
 #contato form button:hover {
+    background-color: var(--azul-escuro); /* Cor azul escuro no hover */
     transform: translateY(-3px);
     box-shadow: 0 8px 12px rgba(0, 212, 255, 0.3);
-}
-
-#contato form button:hover::before {
-    transform: translate(-50%, -50%) scale(1);
 }
 
 #contato form button:active {
@@ -556,7 +676,7 @@ footer {
 
 /* Estilos do Rodapé */
 footer {
-    background-color: #1a1a2e;
+    background-color: #35353b;
     color: #fff;
     padding: 40px 20px 20px;
     font-family: 'Poppins', sans-serif;
