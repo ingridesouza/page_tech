@@ -208,13 +208,14 @@ nav ul li a:hover {
 #servicos {
     padding: 80px 50px;
     text-align: center;
-    background: linear-gradient(135deg, var(--azul-escuro), var(--azul-escuro-secundario));
+    background: linear-gradient(135deg, #ffffff, #f0f4f8); /* Gradiente sutil */
+    color: #333; /* Texto escuro para contraste */
 }
 
 #servicos h2 {
-    font-size: 2em;
+    font-size: 2.5em;
     margin-bottom: 20px;
-    color: var(--azul-claro);
+    color: var(--azul-escuro); /* Usando a cor azul escuro do root */
 }
 
 .servicos-container {
@@ -226,11 +227,11 @@ nav ul li a:hover {
 }
 
 .servico {
-    background: rgba(255, 255, 255, 0.05);
+    background: #fff; /* Fundo branco para os cards */
     padding: 20px;
     border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borda sutil */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
     width: 300px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -238,30 +239,41 @@ nav ul li a:hover {
 
 .servico:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 12px rgba(0, 212, 255, 0.2);
-    border-color: var(--azul-claro);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
 }
 
 .servico h3 {
-    color: var(--azul-claro);
+    color: var(--azul-escuro); /* Cor azul escuro para os títulos */
     font-size: 1.5em;
     margin-bottom: 10px;
 }
 
 .servico p {
     font-size: 1em;
-    color: #ccc;
+    color: #555; /* Texto mais suave */
 }
 
-.servico i, .etapa i {
+.servico i {
     font-size: 2.5em;
-    color: var(--azul-claro);
+    color: var(--azul-claro); /* Cor azul claro para os ícones */
     margin-bottom: 15px;
     transition: color 0.3s ease;
 }
 
-.servico:hover i, .etapa:hover i {
-    color: var(--destaque);
+.servico:hover i {
+    color: var(--destaque); /* Cor de destaque no hover */
+}
+
+@media (max-width: 768px) {
+    .servicos-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .servico {
+        width: 100%;
+        max-width: 400px;
+    }
 }
 
 /* Seção Processo */
@@ -534,7 +546,6 @@ footer {
 /* Estilos do Rodapé */
 footer {
     background-color: #1a1a2e;
-    /* background: linear-gradient(135deg, var(--azul-escuro), var(--azul-escuro-secundario)); */
     color: #fff;
     padding: 40px 20px 20px;
     font-family: 'Poppins', sans-serif;
