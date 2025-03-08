@@ -72,19 +72,20 @@ nav ul li a:hover {
 #hero {
     text-align: center;
     padding: 150px 50px;
-    background: linear-gradient(135deg, var(--azul-escuro), var(--azul-escuro-secundario));
+    background-color: rgb(230, 230, 230);
+    /* background: linear-gradient(135deg, var(--azul-escuro), var(--azul-escuro-secundario)); */
     margin-top: 80px;
-    background-image: url('{{ url_for("static", filename="images/tech-background.jpg") }}');
+    /* background-image: url('{{ url_for("static", filename="images/tech-background.jpg") }}'); */
     background-size: cover;
     background-position: center;
-    color: white;
+    color: #0f3460;
 }
 
 #hero h2 {
     font-size: 3em;
     margin-bottom: 20px;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--azul-claro), var(--destaque));
+    background: linear-gradient(135deg, #0f3460,#1a1a2e);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -103,7 +104,7 @@ nav ul li a:hover {
 #hero p {
     font-size: 1.5em;
     margin-bottom: 30px;
-    color: #ccc;
+    color: #0f3460;
 }
 
 #hero p strong {
@@ -115,13 +116,13 @@ nav ul li a:hover {
 .btn {
     display: inline-block;
     padding: 15px 30px;
-    background: linear-gradient(135deg, var(--azul-claro), var(--destaque));
+    background: linear-gradient(135deg, var(--azul-claro), var(--azul-escuro));
     color: var(--cinza-escuro);
     text-decoration: none;
     border-radius: 50px;
     font-size: 1.2em;
     font-weight: 600;
-    border: 2px solid transparent;
+    /* border: 2px solid transparent; */
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -134,7 +135,7 @@ nav ul li a:hover {
     left: 50%;
     width: 300%;
     height: 300%;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
+    background: radial-gradient(circle, rgba(61, 61, 61, 0.3), transparent);
     transform: translate(-50%, -50%) scale(0);
     transition: transform 0.5s ease;
     border-radius: 50%;
@@ -142,7 +143,7 @@ nav ul li a:hover {
 
 .btn:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);
+    box-shadow: 0 10px 20px rgba(54, 117, 129, 0.3);
 }
 
 .btn:hover::before {
@@ -153,7 +154,7 @@ nav ul li a:hover {
 #sobre {
     padding: 80px 50px;
     text-align: center;
-    background: linear-gradient(135deg, var(--azul-escuro-secundario), var(--azul-escuro));
+    /* background: linear-gradient(135deg, var(--azul-escuro-secundario), var(--azul-escuro)); */
 }
 
 #sobre h2 {
@@ -167,6 +168,42 @@ nav ul li a:hover {
     line-height: 1.6;
     max-width: 800px;
     margin: auto;
+}
+.sobre-imagem img {
+    width: 100%; /* Ajusta a largura para 100% do contêiner */
+    max-width: 500px; /* Define uma largura máxima */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 10px; /* Adiciona bordas arredondadas (opcional) */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra (opcional) */
+}
+
+.sobre-container {
+    display: flex;
+    align-items: center; /* Alinha verticalmente ao centro */
+    gap: 40px; /* Espaçamento entre o texto e a imagem */
+    max-width: 1200px; /* Largura máxima do contêiner */
+    margin: 0 auto; /* Centraliza o contêiner */
+    padding: 20px; /* Espaçamento interno */
+}
+
+.sobre-texto {
+    flex: 1; /* Ocupa o espaço disponível */
+}
+
+.sobre-imagem {
+    flex: 1; /* Ocupa o espaço disponível */
+    text-align: center; /* Centraliza a imagem */
+}
+
+@media (max-width: 768px) {
+    .sobre-container {
+        flex-direction: column; /* Empilha o texto e a imagem verticalmente */
+        text-align: center; /* Centraliza o texto */
+    }
+
+    .sobre-imagem img {
+        max-width: 100%; /* Ajusta a largura da imagem para telas menores */
+    }
 }
 
 #servicos {
@@ -232,7 +269,7 @@ nav ul li a:hover {
 #processo {
     text-align: center;
     padding: 80px 50px;
-    background: linear-gradient(135deg, #0f0f3e, #1b1b56);
+    /* background: linear-gradient(135deg, #0f0f3e, #1b1b56); */
     color: white;
 }
 
