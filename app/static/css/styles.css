@@ -235,6 +235,8 @@ nav ul li a:hover {
     width: 300px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden; /* Garante que a borda animada respeite o arredondamento */
 }
 
 .servico:hover {
@@ -278,6 +280,7 @@ nav ul li a:hover {
     transform: scaleX(0);
     transform-origin: right;
     transition: transform 0.3s ease;
+    border-radius: 0 0 15px 15px; /* Arredondamento inferior para combinar com o card */
 }
 
 .servico:hover::after {
