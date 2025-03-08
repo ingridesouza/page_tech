@@ -208,7 +208,7 @@ nav ul li a:hover {
 #servicos {
     padding: 80px 50px;
     text-align: center;
-    background: linear-gradient(135deg, #ffffff, #f0f4f8); /* Gradiente sutil */
+    background: #f9fafb; /* Tom de branco mais suave e harmonioso */
     color: #333; /* Texto escuro para contraste */
 }
 
@@ -230,7 +230,7 @@ nav ul li a:hover {
     background: #fff; /* Fundo branco para os cards */
     padding: 30px;
     border-radius: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.05); /* Borda sutil */
+    border: 1px solid rgba(0, 0, 0, 0.1); /* Borda sutil para quebrar o branco */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Sombra suave */
     width: 300px;
     text-align: center;
