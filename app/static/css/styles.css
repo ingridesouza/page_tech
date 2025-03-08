@@ -340,6 +340,27 @@ nav ul li a:hover {
     line-height: 1.6;
 }
 
+/* Estilos para o vídeo */
+.image-content video {
+    width: 100%; /* Ocupa 100% da largura do contêiner */
+    height: auto; /* Mantém a proporção do vídeo */
+    max-width: 500px; /* Define uma largura máxima para o vídeo */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave */
+}
+
+.image-content video:hover {
+    transform: translateY(-5px); /* Efeito de levantar ao passar o mouse */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra mais intensa no hover */
+}
+
+@media (max-width: 768px) {
+    .image-content video {
+        max-width: 100%; /* Ocupa toda a largura em telas menores */
+    }
+}
+
 /* Seção Serviços */
 #servicos {
     padding: 80px 50px;
