@@ -602,9 +602,9 @@ footer {
     margin-right: 10px;
 }
 
-/* Rodapé inferior */
+/* Rodapé inferior (centralizado) */
 .footer-bottom {
-    text-align: left; /* Alinha o conteúdo do rodapé inferior à esquerda */
+    text-align: center; /* Centraliza o conteúdo */
     margin-top: 40px;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -625,7 +625,7 @@ footer {
     margin: 0;
     display: flex;
     gap: 20px;
-    justify-content: flex-start; /* Alinha os itens à esquerda */
+    justify-content: center; /* Centraliza os itens */
 }
 
 .footer-bottom ul li a {
@@ -654,6 +654,6 @@ footer {
     .footer-bottom ul {
         flex-direction: column;
         gap: 10px;
-        align-items: flex-start; /* Alinha os itens à esquerda */
+        align-items: center; /* Centraliza os itens em telas menores */
     }
 }
