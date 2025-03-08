@@ -356,7 +356,8 @@ nav ul li a:hover {
 #contato {
     text-align: center;
     padding: 80px 50px;
-    background: linear-gradient(135deg, var(--azul-escuro-secundario), var(--azul-escuro));
+    background: linear-gradient(135deg, #1a1a2e, #0f3460); /* Gradiente mais suave e escuro */
+    color: #fff;
 }
 
 #contato h2 {
@@ -371,15 +372,15 @@ nav ul li a:hover {
 
 #contato h2 i {
     font-size: 1.2em;
-    color: var(--destaque);
+    color: var(--azul-claro); /* Cor azul claro para o ícone */
 }
 
 #contato form {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column; /* Alinha os elementos verticalmente */
     gap: 20px;
     width: 100%;
-    max-width: 800px;
+    max-width: 600px; /* Largura máxima reduzida para melhor leitura */
     margin: auto;
     background: rgba(255, 255, 255, 0.05);
     padding: 30px;
@@ -396,19 +397,10 @@ nav ul li a:hover {
     border-color: var(--azul-claro);
 }
 
-#contato .coluna-esquerda {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-#contato .coluna-direita {
-    flex: 1;
-}
-
+/* Grupo de inputs */
 #contato form .input-group {
     position: relative;
+    width: 100%; /* Ocupa toda a largura do formulário */
 }
 
 #contato form input, #contato form textarea {
@@ -441,7 +433,7 @@ nav ul li a:hover {
 
 #contato form textarea {
     resize: vertical;
-    min-height: 200px;
+    min-height: 150px;
     padding-left: 40px;
     padding-top: 15px;
     font-family: 'Poppins', sans-serif;
@@ -461,25 +453,26 @@ nav ul li a:hover {
 }
 
 #contato form input:focus + i, #contato form textarea:focus + i {
-    color: var(--destaque);
+    color: var(--azul-claro); /* Mantém a cor azul claro no foco */
 }
 
+/* Botão de enviar */
 #contato form button {
-    background: linear-gradient(135deg, var(--azul-claro), var(--destaque));
-    color: var(--cinza-escuro);
-    padding: 15px;
+    background: linear-gradient(135deg, var(--azul-claro), var(--azul-escuro));
+    color: #fff; /* Texto branco para contraste */
+    padding: 15px 30px;
     border: none;
-    border-radius: 10px;
+    border-radius: 50px; /* Bordas mais arredondadas */
     font-size: 1.2em;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 200px;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
     box-sizing: border-box;
+    width: 100%;
+    max-width: 200px;
+    margin: 20px auto 0; /* Centraliza o botão */
 }
 
 #contato form button::before {
@@ -516,17 +509,11 @@ nav ul li a:hover {
     }
 
     #contato form {
-        flex-direction: column;
         padding: 20px;
     }
 
-    #contato .coluna-esquerda, #contato .coluna-direita {
-        flex: none;
-        width: 100%;
-    }
-
     #contato form textarea {
-        min-height: 150px;
+        min-height: 120px;
     }
 
     #contato form button {
