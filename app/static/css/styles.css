@@ -73,9 +73,7 @@ nav ul li a:hover {
     text-align: center;
     padding: 150px 50px;
     background-color: rgb(230, 230, 230);
-    /* background: linear-gradient(135deg, var(--azul-escuro), var(--azul-escuro-secundario)); */
     margin-top: 80px;
-    /* background-image: url('{{ url_for("static", filename="images/tech-background.jpg") }}'); */
     background-size: cover;
     background-position: center;
     color: #0f3460;
@@ -85,7 +83,7 @@ nav ul li a:hover {
     font-size: 3em;
     margin-bottom: 20px;
     font-weight: 700;
-    background: linear-gradient(135deg, #0f3460,#1a1a2e);
+    background: linear-gradient(135deg, #0f3460, #1a1a2e);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -122,7 +120,6 @@ nav ul li a:hover {
     border-radius: 50px;
     font-size: 1.2em;
     font-weight: 600;
-    /* border: 2px solid transparent; */
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -150,11 +147,10 @@ nav ul li a:hover {
     transform: translate(-50%, -50%) scale(1);
 }
 
-/* Restante do CSS (mantido igual) */
+/* Seção Sobre */
 #sobre {
     padding: 80px 50px;
     text-align: center;
-    /* background: linear-gradient(135deg, var(--azul-escuro-secundario), var(--azul-escuro)); */
 }
 
 #sobre h2 {
@@ -169,43 +165,46 @@ nav ul li a:hover {
     max-width: 800px;
     margin: auto;
 }
-.sobre-imagem img {
-    width: 100%; /* Ajusta a largura para 100% do contêiner */
-    max-width: 500px; /* Define uma largura máxima */
-    height: auto; /* Mantém a proporção da imagem */
-    border-radius: 10px; /* Adiciona bordas arredondadas (opcional) */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra (opcional) */
-}
 
 .sobre-container {
     display: flex;
-    align-items: center; /* Alinha verticalmente ao centro */
-    gap: 40px; /* Espaçamento entre o texto e a imagem */
-    max-width: 1200px; /* Largura máxima do contêiner */
-    margin: 0 auto; /* Centraliza o contêiner */
-    padding: 20px; /* Espaçamento interno */
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .sobre-texto {
-    flex: 1; /* Ocupa o espaço disponível */
+    flex: 1;
+    text-align: start;
 }
 
 .sobre-imagem {
-    flex: 1; /* Ocupa o espaço disponível */
-    text-align: center; /* Centraliza a imagem */
+    flex: 1;
+    text-align: center;
+}
+
+.sobre-imagem img {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 @media (max-width: 768px) {
     .sobre-container {
-        flex-direction: column; /* Empilha o texto e a imagem verticalmente */
-        text-align: center; /* Centraliza o texto */
+        flex-direction: column;
+        text-align: center;
     }
 
     .sobre-imagem img {
-        max-width: 100%; /* Ajusta a largura da imagem para telas menores */
+        max-width: 100%;
     }
 }
 
+/* Seção Serviços */
 #servicos {
     padding: 80px 50px;
     text-align: center;
@@ -254,7 +253,6 @@ nav ul li a:hover {
     color: #ccc;
 }
 
-/* Estilos para os ícones */
 .servico i, .etapa i {
     font-size: 2.5em;
     color: var(--azul-claro);
@@ -266,10 +264,10 @@ nav ul li a:hover {
     color: var(--destaque);
 }
 
+/* Seção Processo */
 #processo {
     text-align: center;
     padding: 80px 50px;
-    /* background: linear-gradient(135deg, #0f0f3e, #1b1b56); */
     color: white;
 }
 
@@ -318,76 +316,10 @@ nav ul li a:hover {
     transform: scale(1.2);
 }
 
+/* Seção Contato */
 #contato {
     text-align: center;
     padding: 80px 50px;
-    background: linear-gradient(135deg, var(--azul-escuro-secundario), var(--azul-escuro));
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    width: 300px;
-    margin: auto;
-}
-
-form input, form textarea {
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: #1a1a2e;
-    color: #fff;
-}
-
-form button {
-    background-color: var(--destaque);
-    color: var(--cinza-escuro);
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-form button:hover {
-    background-color: #00cc77;
-}
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #111;
-    color: var(--azul-claro);
-    font-size: 1.2em;
-}
-
-.background-animation {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at center, rgba(0, 212, 255, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
-    z-index: -1;
-    animation: pulse 5s infinite alternate ease-in-out;
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 0.8;
-    }
-    100% {
-        transform: scale(1.1);
-        opacity: 1;
-    }
-}
-
-/* Estilo da seção Fale Conosco */
-#contato {
-    text-align: center;
-    padding: 80px 20px;
     background: linear-gradient(135deg, var(--azul-escuro-secundario), var(--azul-escuro));
 }
 
@@ -411,7 +343,7 @@ footer {
     flex-wrap: wrap;
     gap: 20px;
     width: 100%;
-    max-width: 800px; /* Aumentei a largura máxima para acomodar as colunas */
+    max-width: 800px;
     margin: auto;
     background: rgba(255, 255, 255, 0.05);
     padding: 30px;
@@ -428,7 +360,6 @@ footer {
     border-color: var(--azul-claro);
 }
 
-/* Coluna da Esquerda (Nome e Email) */
 #contato .coluna-esquerda {
     flex: 1;
     display: flex;
@@ -436,7 +367,6 @@ footer {
     gap: 15px;
 }
 
-/* Coluna da Direita (Mensagem) */
 #contato .coluna-direita {
     flex: 1;
 }
@@ -461,13 +391,11 @@ footer {
     color: rgba(255, 255, 255, 0.5);
 }
 
-/* Estilo do placeholder do textarea */
 #contato form textarea::placeholder {
-    font-family: 'Poppins', sans-serif; /* Mesma fonte */
-    font-size: 1em; /* Mesmo tamanho */
-    color: rgba(255, 255, 255, 0.5); /* Mesma cor do placeholder dos outros campos */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.5);
 }
-
 
 #contato form input:focus, #contato form textarea:focus {
     border-color: var(--azul-claro);
@@ -475,16 +403,15 @@ footer {
     outline: none;
 }
 
-/* Estilo do textarea com placeholder alinhado e fonte consistente */
 #contato form textarea {
     resize: vertical;
     min-height: 200px;
-    padding-left: 40px; /* Ajuste o padding para alinhar com o ícone */
-    padding-top: 15px; /* Mantém o padding superior consistente */
-    font-family: 'Poppins', sans-serif; /* Garante a mesma fonte */
-    font-size: 1em; /* Tamanho da fonte igual aos outros campos */
-    color: #fff; /* Cor do texto */
-    line-height: 1.6; /* Ajuste o line-height para alinhar o ícone */
+    padding-left: 40px;
+    padding-top: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    color: #fff;
+    line-height: 1.6;
 }
 
 #contato form .input-group i {
@@ -571,16 +498,34 @@ footer {
     }
 }
 
-/* Estilo do textarea com placeholder alinhado */
-#contato form textarea {
-    resize: vertical;
-    min-height: 200px;
-    padding-left: 40px; /* Ajuste o padding para alinhar com o ícone */
-    padding-top: 15px; /* Mantém o padding superior consistente */
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    color: var(--azul-claro);
+    font-size: 1.2em;
 }
 
-/* Ajuste do ícone no textarea */
-#contato form .input-group textarea + i {
-    top: 23px; /* Ajuste fino na posição vertical do ícone */
-    transform: translateY(0); /* Remove o translateY anterior */
+/* Animação de fundo */
+.background-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 212, 255, 0.2) 0%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: -1;
+    animation: pulse 5s infinite alternate ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
 }
