@@ -468,7 +468,14 @@ nav ul li a:hover {
 #processo {
     text-align: center;
     padding: 80px 50px;
+    background: linear-gradient(135deg, var(--azul-escuro), var(--azul-escuro-secundario)); /* Fundo gradiente moderno */
     color: white;
+}
+
+#processo h2 {
+    font-size: 2.5em;
+    margin-bottom: 60px;
+    color: var(--azul-claro); /* Cor azul claro para o título */
 }
 
 .processo-container {
@@ -477,14 +484,16 @@ nav ul li a:hover {
     align-items: center;
     flex-wrap: wrap;
     gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .etapa {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 20px;
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente */
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
     width: 250px;
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -492,28 +501,69 @@ nav ul li a:hover {
 
 .etapa:hover {
     transform: translateY(-10px);
-    box-shadow: 0 8px 12px rgba(0, 212, 255, 0.2);
-    border-color: var(--azul-claro);
+    box-shadow: 0 8px 20px rgba(0, 212, 255, 0.3); /* Sombra mais intensa no hover */
+    background: rgba(255, 255, 255, 0.15); /* Fundo mais claro no hover */
 }
 
-.etapa-icone {
-    font-size: 2em;
-    margin-bottom: 10px;
+.etapa i {
+    font-size: 2.5em;
+    color: var(--azul-claro); /* Cor azul claro para os ícones */
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
 }
 
+.etapa:hover i {
+    color: var(--destaque); /* Cor de destaque no hover */
+}
+
+.etapa h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: var(--azul-claro); /* Cor azul claro para os títulos */
+}
+
+.etapa p {
+    font-size: 1em;
+    color: #ddd; /* Texto mais claro */
+    line-height: 1.6;
+}
+
+/* Estilo das setas */
 .seta {
     font-size: 2em;
-    color: rgba(0, 212, 255, 0.8);
-}
-
-.seta i {
-    font-size: 2em;
-    color: rgba(0, 212, 255, 0.8);
+    color: var(--azul-claro); /* Cor azul claro para as setas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
     transition: transform 0.3s ease;
 }
 
+.seta i {
+    font-size: 1.5em;
+    color: var(--azul-claro);
+    transition: color 0.3s ease;
+}
+
 .seta:hover i {
-    transform: scale(1.2);
+    color: var(--destaque); /* Cor de destaque no hover */
+    transform: scale(1.2); /* Efeito de zoom */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .processo-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .seta {
+        transform: rotate(90deg); /* Gira as setas para baixo em telas menores */
+    }
+
+    .etapa {
+        width: 100%;
+        max-width: 400px;
+    }
 }
 
 /* Seção Contato */
