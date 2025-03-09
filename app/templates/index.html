@@ -1,19 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+<!-- Seção Hero -->
 <section id="hero">
     <div class="hero-content">
         <h2>Transformamos ideias em realidade digital</h2>
         <p>Desenvolvimento de software sob medida para seu negócio.</p>
         <a href="#contato" class="btn">Entre em contato</a>
     </div>
+    <video autoplay loop muted playsinline class="hero-video">
+        <source src="{{ url_for('static', filename='videos/hero-background.mp4') }}" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+    </video>
 </section>
 
+<!-- Seção Sobre -->
 <section id="sobre">
     <div class="sobre-container">
         <div class="sobre-texto">
             <h2>Nossa História</h2>
             <p>A ByteWave nasceu da paixão pela tecnologia e do desejo de criar soluções digitais que realmente fazem a diferença. <br> Desde o início, entendemos que cada empresa tem desafios únicos e, por isso, buscamos oferecer mais do que apenas software – entregamos <strong>soluções personalizadas</strong>, moldadas para atender às necessidades específicas de cada cliente.</p>
+            <a href="/sobre-nos" class="btn">Saiba mais</a>
         </div>
         <div class="sobre-imagem">
             <img src="{{ url_for('static', filename='images/pexels-shkrabaanthony-5475752.jpg') }}" alt="Descrição da imagem">
@@ -21,6 +28,7 @@
     </div>
 </section>
 
+<!-- Seção Automação e IA -->
 <section id="automation-ia">
     <h2>Automações e o Futuro da Inteligência Artificial</h2>
     
@@ -80,8 +88,15 @@
             </video>
         </div>
     </div>
+
+    <!-- Call-to-action -->
+    <div class="cta-automation">
+        <p>Quer saber como podemos aplicar IA e automação no seu negócio?</p>
+        <a href="#contato" class="btn">Fale com nossos especialistas</a>
+    </div>
 </section>
 
+<!-- Seção Serviços -->
 <section id="servicos">
     <h2>Nossos Serviços</h2>
     <div class="servicos-container">
@@ -89,25 +104,35 @@
             <i class="fas fa-cogs"></i>
             <h3>Soluções Customizáveis</h3>
             <p>Softwares desenvolvidos sob medida para cada modelo de negócio, garantindo eficiência e escalabilidade.</p>
+            <a href="/solucoes-customizaveis" class="btn-servico">Saiba mais</a>
         </div>
         <div class="servico">
             <i class="fas fa-laptop-code"></i>
             <h3>Landing Pages Completas</h3>
             <p>Desenvolvemos e entregamos landing pages otimizadas para conversão e SEO, com design moderno e responsivo.</p>
+            <a href="/landing-pages" class="btn-servico">Saiba mais</a>
         </div>
         <div class="servico">
             <i class="fas fa-network-wired"></i>
             <h3>Soluções para Intranet</h3>
             <p>Implementamos sistemas internos seguros e eficientes para melhorar a comunicação e produtividade dentro da sua empresa.</p>
+            <a href="/intranet" class="btn-servico">Saiba mais</a>
         </div>
         <div class="servico">
             <i class="fas fa-brain"></i>
             <h3>Inteligência Artificial</h3>
             <p>Automação e análise avançada de dados para otimizar processos e melhorar a experiência do usuário.</p>
+            <a href="/inteligencia-artificial" class="btn-servico">Saiba mais</a>
         </div>
+    </div>
+    <div class="case-sucesso">
+        <h3>Case de Sucesso: Empresa XYZ</h3>
+        <p>Veja como ajudamos a Empresa XYZ a aumentar sua produtividade em 40% com nossas soluções de automação.</p>
+        <a href="/cases/empresa-xyz" class="btn">Ver case completo</a>
     </div>
 </section>
 
+<!-- Seção Processo de Desenvolvimento -->
 <section id="processo">
     <h2>Nosso Processo de Desenvolvimento</h2>
     <div class="processo-container">
@@ -116,34 +141,33 @@
             <h3>Conceito</h3>
             <p>Analisamos suas necessidades, identificamos oportunidades e planejamos a melhor estratégia para o seu negócio.</p>
         </div>
-        
         <div class="seta"><i class="fas fa-chevron-right"></i></div>
-        
         <div class="etapa">
             <i class="fas fa-pencil-ruler"></i>
             <h3>Prototipagem</h3>
             <p>Criamos um MVP funcional com diferentes abordagens para garantir a melhor experiência para seu público.</p>
         </div>
-
         <div class="seta"><i class="fas fa-chevron-right"></i></div>
-
         <div class="etapa">
             <i class="fas fa-code"></i>
             <h3>Desenvolvimento</h3>
             <p>Usamos as melhores tecnologias para construir um sistema robusto, escalável e com SEO otimizado.</p>
         </div>
-
         <div class="seta"><i class="fas fa-chevron-right"></i></div>
-
         <div class="etapa">
             <i class="fas fa-rocket"></i>
             <h3>Deploy e Otimização</h3>
             <p>Publicamos seu projeto e acompanhamos métricas por 30 dias para otimizar e garantir a melhor performance.</p>
         </div>
     </div>
+    <div class="cta-processo">
+        <p>Pronto para transformar sua ideia em realidade?</p>
+        <a href="#contato" class="btn">Agende uma consulta</a>
+    </div>
 </section>
 
-<section id="contato">
+<!-- Seção Contato -->
+<section id="contato" style='background-image: url('{{ url_for("static", filename="images/pexels-negativespace-97077.jpg") }}');'>
     <h2><i class="fas fa-envelope"></i> Fale Conosco</h2>
     <form id="formContato">
         <!-- Coluna da Esquerda (Nome e Email) -->
@@ -169,8 +193,15 @@
         <!-- Botão de Envio -->
         <button type="submit">Enviar</button>
     </form>
+    <div class="mapa">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.987646382548!2d-38.51090268477068!3d-12.972462963614957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzIwLjkiUyAzOMKwMzAnMzEuNyJX!5e0!3m2!1spt-BR!2sbr!4v1629999999999!5m2!1spt-BR!2sbr" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <div id="mensagem-sucesso" style="display: none;">
+        <p>Mensagem enviada com sucesso! Entraremos em contato em breve.</p>
+    </div>
 </section>
 
+<!-- Footer -->
 <footer>
     <div class="footer-container">
         <!-- Logo e descrição da empresa -->
@@ -210,6 +241,20 @@
                 <li><a href="#" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
             </ul>
         </div>
+
+        <!-- Newsletter -->
+        <div class="footer-newsletter">
+            <h3>Assine nossa newsletter</h3>
+            <form id="formNewsletter">
+                <input type="email" name="email" placeholder="Seu e-mail" required>
+                <button type="submit">Assinar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Botão "Voltar ao topo" -->
+    <div class="voltar-topo">
+        <a href="#hero"><i class="fas fa-chevron-up"></i></a>
     </div>
 
     <!-- Rodapé inferior (Política de Privacidade e Direitos Autorais) -->
