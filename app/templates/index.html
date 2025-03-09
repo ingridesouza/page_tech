@@ -167,11 +167,11 @@
 </section>
 
 <!-- Seção Contato -->
-<section id="contato" style='background-image: url('{{ url_for("static", filename="images/pexels-negativespace-97077.jpg") }}');'>
+<section id="contato">
     <h2><i class="fas fa-envelope"></i> Fale Conosco</h2>
-    <form id="formContato">
-        <!-- Coluna da Esquerda (Nome e Email) -->
-        <div class="coluna-esquerda">
+    <div class="contato-container">
+        <!-- Formulário de Contato -->
+        <form id="formContato">
             <div class="input-group">
                 <input type="text" name="nome" placeholder="Seu Nome" required>
                 <i class="fas fa-user"></i>
@@ -180,24 +180,17 @@
                 <input type="email" name="email" placeholder="Seu Email" required>
                 <i class="fas fa-envelope"></i>
             </div>
-        </div>
-
-        <!-- Coluna da Direita (Mensagem) -->
-        <div class="coluna-direita">
             <div class="input-group">
                 <textarea name="mensagem" placeholder="Sua Mensagem" required></textarea>
                 <i class="fas fa-comment"></i>
             </div>
-        </div>
+            <button type="submit">Enviar</button>
+        </form>
 
-        <!-- Botão de Envio -->
-        <button type="submit">Enviar</button>
-    </form>
-    <div class="mapa">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.987646382548!2d-38.51090268477068!3d-12.972462963614957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzIwLjkiUyAzOMKwMzAnMzEuNyJX!5e0!3m2!1spt-BR!2sbr!4v1629999999999!5m2!1spt-BR!2sbr" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-    <div id="mensagem-sucesso" style="display: none;">
-        <p>Mensagem enviada com sucesso! Entraremos em contato em breve.</p>
+        <!-- Mapa -->
+        <div class="mapa">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.987646382548!2d-38.51090268477068!3d-12.972462963614957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDU4JzIwLjkiUyAzOMKwMzAnMzEuNyJX!5e0!3m2!1spt-BR!2sbr!4v1629999999999!5m2!1spt-BR!2sbr" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
     </div>
 </section>
 
@@ -266,4 +259,84 @@
         </ul>
     </div>
 </footer>
+
+<script>
+    // Função para rolar suavemente até o topo da página
+    function scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Rolagem suave
+        });
+    }
+
+    // Função para mostrar ou ocultar o botão
+    function toggleScrollButton() {
+        const scrollButton = document.querySelector('.voltar-topo');
+        const heroSection = document.querySelector('#hero');
+        const heroHeight = heroSection.offsetHeight; // Altura da primeira seção
+
+        if (window.scrollY > heroHeight) {
+            scrollButton.style.display = 'block'; // Mostra o botão
+        } else {
+            scrollButton.style.display = 'none'; // Oculta o botão
+        }
+    }
+
+    // Adiciona o evento de clique ao botão "Voltar ao Topo"
+    document.querySelector('.voltar-topo a').addEventListener('click', function (e) {
+        e.preventDefault(); // Impede o comportamento padrão do link
+        scrollToTop(); // Chama a função de rolagem suave
+    });
+
+    // Verifica a posição de rolagem ao carregar a página e ao rolar
+    window.addEventListener('scroll', toggleScrollButton);
+    window.addEventListener('load', toggleScrollButton);
+
+
+
+    // Espera o carregamento completo da página
+    window.addEventListener('load', function () {
+        document.body.classList.add('loaded'); // Adiciona a classe 'loaded' ao body
+    });
+
+        // Função para pré-carregar imagens e vídeos
+        function preloadAssets() {
+            const images = document.querySelectorAll('img');
+            const videos = document.querySelectorAll('video');
+    
+            let loadedAssets = 0;
+            const totalAssets = images.length + videos.length;
+    
+            // Verifica se todas as imagens e vídeos foram carregados
+            function checkAssetsLoaded() {
+                loadedAssets++;
+                if (loadedAssets === totalAssets) {
+                    document.body.classList.add('loaded'); // Mostra o conteúdo
+                }
+            }
+    
+            // Pré-carrega as imagens
+            images.forEach(img => {
+                if (img.complete) {
+                    checkAssetsLoaded(); // Se a imagem já estiver carregada
+                } else {
+                    img.addEventListener('load', checkAssetsLoaded); // Quando a imagem carregar
+                    img.addEventListener('error', checkAssetsLoaded); // Em caso de erro
+                }
+            });
+    
+            // Pré-carrega os vídeos
+            videos.forEach(video => {
+                if (video.readyState >= 3) { // Verifica se o vídeo já está carregado
+                    checkAssetsLoaded();
+                } else {
+                    video.addEventListener('loadeddata', checkAssetsLoaded); // Quando o vídeo carregar
+                    video.addEventListener('error', checkAssetsLoaded); // Em caso de erro
+                }
+            });
+        }
+    
+        // Espera o carregamento completo da página e dos recursos
+        window.addEventListener('load', preloadAssets);
+</script>
 {% endblock %}

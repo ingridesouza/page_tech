@@ -16,12 +16,57 @@ body {
     background-color: var(--cinza-escuro);
     color: #fff;
     line-height: 1.6;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
+/* Mostra o conteúdo após o carregamento */
+body.loaded {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+/* Estilos do Loader */
+#loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--cinza-escuro);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loader-spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid var(--azul-claro);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Estilos do Conteúdo */
+#content {
+    display: none; /* Oculta o conteúdo inicialmente */
+}
+
+
+/* Estilos para o Header com Logo */
 header {
     background: linear-gradient(135deg, var(--azul-escuro), var(--azul-escuro-secundario));
     color: white;
-    padding: 20px;
+    padding: 10px 20px;
     text-align: center;
     position: fixed;
     width: 100%;
@@ -40,10 +85,9 @@ nav {
     padding: 0 20px;
 }
 
-nav h1 {
-    font-size: 1.8em;
-    color: var(--azul-claro);
-    font-weight: 700;
+nav .logo img {
+    max-width: 150px; /* Ajuste o tamanho da logo conforme necessário */
+    height: auto;
 }
 
 nav ul {
@@ -586,12 +630,8 @@ nav ul li a:hover {
 #contato {
     text-align: center;
     padding: 80px 50px;
-    /* background-color: #000000; */
-    background-image: url('{{ url_for("static", filename="images/pexels-negativespace-97077.jpg") }}'); 
+    background-color: #000000;
     color: #fff;
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
 }
 
 #contato h2 {
@@ -736,6 +776,59 @@ nav ul li a:hover {
 
     #contato form button {
         max-width: 100%;
+    }
+}
+
+/* Estilos para o Contêiner de Contato */
+.contato-container {
+    display: flex;
+    gap: 40px; /* Espaçamento entre o formulário e o mapa */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    align-items: flex-start; /* Alinha os itens ao topo */
+}
+
+/* Estilos para o Formulário */
+#formContato {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#formContato:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 212, 255, 0.2);
+    border-color: var(--azul-claro);
+}
+
+/* Estilos para o Mapa */
+.mapa {
+    flex: 1;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mapa iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Estilos Responsivos */
+@media (max-width: 768px) {
+    .contato-container {
+        flex-direction: column;
+        gap: 20px; /* Reduz o espaçamento em telas menores */
+    }
+
+    #formContato, .mapa {
+        width: 100%;
     }
 }
 
@@ -896,4 +989,90 @@ footer {
         gap: 10px;
         align-items: center; /* Centraliza os itens em telas menores */
     }
+}
+
+/* Estilos para a Newsletter */
+.footer-newsletter {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.footer-newsletter h3 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: var(--azul-claro);
+}
+
+.footer-newsletter form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.footer-newsletter input[type="email"] {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    font-size: 1em;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-newsletter input[type="email"]::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.footer-newsletter input[type="email"]:focus {
+    border-color: var(--azul-claro);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    outline: none;
+}
+
+.footer-newsletter button {
+    padding: 10px 20px;
+    background: var(--azul-claro);
+    color: var(--cinza-escuro);
+    border: none;
+    border-radius: 50px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.footer-newsletter button:hover {
+    background: var(--azul-escuro);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 212, 255, 0.3);
+}
+
+/* Estilos para a Seta de Subir */
+.voltar-topo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.voltar-topo a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: var(--azul-claro);
+    border-radius: 50%;
+    color: var(--cinza-escuro);
+    text-decoration: none;
+    font-size: 1.5em;
+    box-shadow: 0 4px 10px rgba(0, 212, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.voltar-topo a:hover {
+    background: var(--azul-escuro);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 212, 255, 0.5);
 }
