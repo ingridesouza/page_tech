@@ -468,14 +468,14 @@ nav ul li a:hover {
 #processo {
     text-align: center;
     padding: 80px 50px;
-    background: linear-gradient(135deg, var(--azul-escuro), var(--azul-escuro-secundario)); /* Fundo gradiente moderno */
+    background-color: #1e1e1e; /* Cor de fundo moderna (cinza escuro) */
     color: white;
 }
 
 #processo h2 {
     font-size: 2.5em;
     margin-bottom: 60px;
-    color: var(--azul-claro); /* Cor azul claro para o título */
+    color: white; /* Título em branco */
 }
 
 .processo-container {
@@ -513,13 +513,13 @@ nav ul li a:hover {
 }
 
 .etapa:hover i {
-    color: var(--destaque); /* Cor de destaque no hover */
+    color: var(--azul-escuro); /* Cor azul escuro no hover */
 }
 
 .etapa h3 {
     font-size: 1.5em;
     margin-bottom: 15px;
-    color: var(--azul-claro); /* Cor azul claro para os títulos */
+    color: white; /* Título em branco */
 }
 
 .etapa p {
@@ -535,7 +535,7 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .seta i {
@@ -545,7 +545,7 @@ nav ul li a:hover {
 }
 
 .seta:hover i {
-    color: var(--destaque); /* Cor de destaque no hover */
+    color: var(--azul-escuro); /* Cor azul escuro no hover */
     transform: scale(1.2); /* Efeito de zoom */
 }
 
