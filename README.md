@@ -109,12 +109,6 @@ Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em c
 
 ---
 
-## 🌟 Agradecimentos
-
-Agradecemos a todos que contribuíram para este projeto, direta ou indiretamente. Seu apoio é fundamental para o sucesso da ByteWave!
-
----
-
 ### 🚨 **Aviso Importante**
 Esta landing page foi criada para fins educacionais e de portfólio. A **ByteWave** é uma empresa fictícia, e todos os conteúdos apresentados são meramente ilustrativos.
 
