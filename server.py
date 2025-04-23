@@ -40,7 +40,7 @@ with app.app_context():
 with app.app_context():
     if not Usuario.query.filter_by(email='admin@bytewave.com').first():
         admin = Usuario(email='admin@bytewave.com', is_admin=True)
-        admin.set_senha('senha_segura')  # Define a senha com hash
+        admin.set_senha('senha_segura')
         db.session.add(admin)
         db.session.commit()
         print("Usuário administrador padrão criado com sucesso!")
@@ -69,7 +69,6 @@ def autenticar():
     usuario = Usuario.query.filter_by(email=email).first()
 
     if usuario and usuario.verificar_senha(senha):
-        # Grava o ID do usuário na sessão
         session['usuario_id'] = usuario.id
         session['is_admin'] = usuario.is_admin
 
