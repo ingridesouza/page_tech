@@ -2,15 +2,14 @@ from flask import Flask, render_template, request, jsonify, redirect, url_for, s
 from flask_sqlalchemy import SQLAlchemy
 from functools import wraps
 import bcrypt
-from app.routes.admin import admin_bp  # Importar o Blueprint
+from app.routes.admin import admin_bp 
 
 app = Flask(__name__, template_folder='app/templates', static_folder='app/static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mensagens.db'
-app.secret_key = '927e3ae49c9827f64cb30496b705838b'  # Chave secreta para sessões
+app.secret_key = '927e3ae49c9827f64cb30496b705838b'
 
 db = SQLAlchemy(app)
 
-# Registrar o Blueprint (caso ainda queira ter admin em outra rota)
 app.register_blueprint(admin_bp)
 
 # Modelo da tabela de mensagens
@@ -24,11 +23,10 @@ class Mensagem(db.Model):
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), nullable=False, unique=True)
-    senha_hash = db.Column(db.String(128), nullable=False)  # Armazena o hash da senha
+    senha_hash = db.Column(db.String(128), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
 
     def set_senha(self, senha):
-        # Gera o hash da senha
         self.senha_hash = bcrypt.hashpw(senha.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
     def verificar_senha(self, senha):
