@@ -30,14 +30,13 @@ class Usuario(db.Model):
         self.senha_hash = bcrypt.hashpw(senha.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
     def verificar_senha(self, senha):
-        # Verifica se a senha está correta
         return bcrypt.checkpw(senha.encode('utf-8'), self.senha_hash.encode('utf-8'))
 
-# Cria o banco de dados (execute apenas uma vez)
+# Cria o banco de dados
 with app.app_context():
     db.create_all()
 
-# Cria um usuário administrador padrão (opcional, se quiser)
+# Cria um usuário administrador padrão
 with app.app_context():
     if not Usuario.query.filter_by(email='admin@bytewave.com').first():
         admin = Usuario(email='admin@bytewave.com', is_admin=True)
