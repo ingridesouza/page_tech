@@ -72,7 +72,6 @@ def autenticar():
         session['usuario_id'] = usuario.id
         session['is_admin'] = usuario.is_admin
 
-        # Se for admin, poderia ir para algum lugar especial se quisesse
         if usuario.is_admin:
             # Ainda existe esta rota mas não aparece no menu
             return redirect(url_for('admin.painel'))
