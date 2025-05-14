@@ -1,5 +1,6 @@
 # ByteWave - Landing Page para uma Empresa Fictícia
 
+
 Bem-vindo ao repositório da **ByteWave**, uma landing page moderna e responsiva criada para uma empresa fictícia que oferece soluções digitais personalizadas. Este projeto foi desenvolvido como um exemplo de design e desenvolvimento web, demonstrando boas práticas e integração de tecnologias.
 
 ---
