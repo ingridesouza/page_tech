@@ -12,6 +12,7 @@ db = SQLAlchemy(app)
 
 app.register_blueprint(admin_bp)
 
+
 # Modelo da tabela de mensagens
 class Mensagem(db.Model):
     id = db.Column(db.Integer, primary_key=True)
